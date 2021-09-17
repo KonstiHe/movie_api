@@ -19,6 +19,7 @@ let topMovies = [
 
 app.use(morgan("common"));
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("Welcome to my favorite movies!");
@@ -65,7 +66,6 @@ app.delete("/users/:name/deregister", (req, res) => {
     "Successful DELETE request returning a message to a user about successufully deregistering."
   );
 });
-app.use(express.static("public"));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
