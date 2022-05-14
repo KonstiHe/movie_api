@@ -17,12 +17,12 @@
   </head>
   <body>
     <main>
-      <h1 class="text-center">NotFlix API - Documentation</h1>
+      <h1 class="text-center">MyFlix API - Documentation</h1>
       <h2 class="mt-5">Overview</h2>
       <p>
-        The web application NotFlix will provide users with access to
-        information about different movies, directors, and genres by offering a
-        set of endpoints to achieve different results.<br />
+        The web application MyFlix will provide users with access to information
+        about different movies, directors, and genres by offering a set of
+        endpoints to achieve different results.<br />
         Users will be able to sign up, update their personal information, and
         create a list of their favorite movies.
       </p>
@@ -62,7 +62,7 @@
           </tr>
           <tr>
             <td>Return info about a genre by name.</td>
-            <td class="url">/genres/:genre</td>
+            <td class="url">/movies/:genre</td>
             <td class="method">GET</td>
             <td>None</td>
             <td>
@@ -73,7 +73,7 @@
 
           <tr>
             <td>Return data about a director by name.</td>
-            <td class="url">/directors/:name</td>
+            <td class="url">/movies/:directorname</td>
             <td class="method">GET</td>
             <td>None</td>
             <td>
@@ -100,7 +100,7 @@
             <td>
               Allow users to update their user info.
             </td>
-            <td class="url">/users/:username</td>
+            <td class="url">/users/:Name</td>
             <td class="method">PUT</td>
             <td>
               A JSON object holding the data to be updated.<br />
@@ -117,13 +117,14 @@
               Allow users to add a movie to their list of favorites.
             </td>
             <td class="url">
-              /users/:username/favorites/:newFavMovieId
+              /users/:Name/movies/:MovieID
             </td>
             <td class="method">PUT</td>
             <td>None</td>
             <td>
-              A message indicating that the movie has been successfully added to
-              the list of the user's favorites.
+              A JSON object holding the data of the user, included the added
+              MovieID.<br />
+              Example:
             </td>
           </tr>
           <tr>
@@ -143,24 +144,24 @@
               Allow users to remove a movie from their list of favorites.
             </td>
             <td class="url">
-              /users/:username/favorites/:movieToRemoveId
+              /users/:Name/movie/:MovieID
             </td>
             <td class="method">DELETE</td>
             <td>None</td>
             <td>
-              A message indicating that the movie has been successfully removed
-              from the list of the user's favorites.
+              A JSON object holding the data of the user, included the updated
+              FavoriteMovies field.<br />
+              Example:
             </td>
           </tr>
 
           <tr>
             <td>Allow existing users to deregister.</td>
-            <td class="url">users/:username/deregister</td>
+            <td class="url">users/:Name</td>
             <td class="method">DELETE</td>
             <td>None</td>
             <td>
-              A message indicating that the user has been successfully
-              deregister.
+              A message indicating that the user has been successfully deleted.
             </td>
           </tr>
         </tbody>
