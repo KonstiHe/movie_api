@@ -16,7 +16,7 @@ app.use(express.static('public'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/MyFlixDB', {
+mongoose.connect('mongodb://127.0.0.1/MyFlixDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -47,7 +47,7 @@ app.get('/movies/:Title', (req, res) => {
     });
 });
 
-app.get('/movies/:Genre', (req, res) => {
+app.get('/movies/genres/:Genre', (req, res) => {
   Movies.find({ 'Genre.Name': req.params.Genre })
     .then(movies => {
       res.json(movies);
@@ -58,7 +58,8 @@ app.get('/movies/:Genre', (req, res) => {
     });
 });
 
-app.get('/movies/:directorname', (req, res) => {
+app.get('/movies/directors/:directorname', (req, res) => {
+  console.log(req.params.directorname, 'directorname');
   Movies.find({ 'Director.Name': req.params.directorname })
     .then(director => {
       res.json(director);
